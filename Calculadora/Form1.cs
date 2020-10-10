@@ -14,7 +14,7 @@ namespace Calculadora
 {
     public partial class Calculadora : Form
     {
-        bool operacion;
+        bool operacion,zerodiv=false;
         private void Suma_Click(object sender, EventArgs e)
         {
             if(operacion) {
@@ -116,7 +116,11 @@ namespace Calculadora
         private void Igual_Click(object sender, EventArgs e)
         {
             double resultado = Calcular(Leer());
+            if(zerodiv==true){
+                Dísplay.Text = "Syntax Error."
+            } else {
             Display.Text = Convert.ToString(resultado);
+            }
         }
 
         // Lo que esta comentado de esta forma es codigo que ya no se usa pero lo wa dejar ahi por si se me olvida como le hice para llegar al codigo utilizado.
@@ -245,6 +249,7 @@ namespace Calculadora
                             if (Convert.ToInt32(opdos) != 0)
                             {
                                 arreglo[(arreglo.IndexOf('/') - cuno)] = Convert.ToString(Convert.ToInt32(opuno) / Convert.ToInt32(opdos));
+                                zerodiv=true;
                             }
                             else {
                                 arreglo[(arreglo.IndexOf('/') - cuno)] = 0;
