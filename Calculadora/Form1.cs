@@ -242,7 +242,14 @@ namespace Calculadora
                                     break;
                                 }
                             }
-                            arreglo[(arreglo.IndexOf('/') - cuno)] = Convert.ToString(Convert.ToInt32(opuno) / Convert.ToInt32(opdos));
+                            if (Convert.ToInt32(opdos) != 0)
+                            {
+                                arreglo[(arreglo.IndexOf('/') - cuno)] = Convert.ToString(Convert.ToInt32(opuno) / Convert.ToInt32(opdos));
+                            }
+                            else {
+                                arreglo[(arreglo.IndexOf('/') - cuno)] = 0;
+                                MessageBox.Show("Division invalida, sustituyendo valor con 0.");
+                            }
                             for (int k = 1; k < cuno; k++)
                             {
                                 arreglo.RemoveAt(arreglo.IndexOf('/') - 1);
